@@ -21,24 +21,24 @@ from django.contrib import messages
 
 def home(request):
     if request.user.is_authenticated:
-        if Join.objects.filter(user_id=request.user).exists():
-            hood = Hood.objects.get(pk=request.user.join.hood_id.id)
-            posts = Posts.objects.filter(hood=request.user.join.hood_id.id)
-            businesses = Business.objects.filter(hood=request.user.join.hood_id.id)
+        if More.objects.filter(user_id=request.user).exists():
+            home = Home.objects.get(pk=request.user.join.hood_id.id)
+            posts = Posts.objects.filter(home=request.user.join.hood_id.id)
+            businesses = Business.objects.filter(home=request.user.join.hood_id.id)
 
-            return render(request, 'hoods/hood.html', {"hood": hood, "businesses": businesses, "posts": posts})
+            return render(request, 'homes/home.html', {"home": home, "businesses": businesses, "posts": posts})
         else:
-            neighbourhoods = Hood.objects.all()
+            neighbourhoods = Home.objects.all()
             return render(request, 'index.html',{"neighbourhoods":neighbourhoods})
     else:
-        neighbourhoods = Hood.objects.all()
+        neighbourhoods = Home.objects.all()
         return render(request, 'index.html',{"neighbourhoods":neighbourhoods})
 
 @login_required(login_url='/accounts/login')
 def profile(request):
 
     profile = Profile.objects.get(user = request.user)
-    return render(request,'profiles/profile.html',{"profile":profile,"hoods":hoods,"business": business}) 
+    return render(request,'profiles/profile.html',{"profile":profile,"homes":homes}) 
 
 @login_required(login_url='/accounts/login/')
 def edit_profile(request):
@@ -59,10 +59,10 @@ def edit_profile(request):
     return render(request, 'profiles/edit_profile.html', {"form": form})
 
 
-def hoods(request):
+def homes(request):
 
-	hoods = Hood.objects.filter(user = request.user)
-	return render(request,'hoods/hood.html',{"hoods":hoods})
+	homes = Home.objects.filter(user = request.user)
+	return render(request,'homes/home.html',{"homes":homes})
 
 
 @login_required(login_url="/accounts/login/")

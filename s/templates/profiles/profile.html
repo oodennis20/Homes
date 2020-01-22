@@ -45,21 +45,17 @@
       {% for hood in hoods %}
       <div class="col-md-4">
         <h4>Hoods</h4>
-        <img src="{{hood.hood_photo.cdn_url}}" alt="Image" style="height:300px;width:300px;">
+        <img src="{{home.home_photo.cdn_url}}" alt="Image" style="height:300px;width:300px;">
         <br>
-        <a href="{% url 'delete_hood' hood.id %}" class="btn btn-sm btn-danger">Delete</a>
+        <a href="{% url 'delete_home' home.id %}" class="btn btn-sm btn-danger">Delete</a>
         <hr>
       </div>
       {% empty %}
       <div>
-        <h2>Profile has no hoods</h2>
+        <h2>Profile has no homes posted</h2>
       </div>
       {% endfor %}
-      <div class="col-4">
-        <h4>Business</h4>
-  {% endfor %}
-
-      </div>
+      
     </div>
 
   </div>

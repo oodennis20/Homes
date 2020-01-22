@@ -55,8 +55,8 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
-    'rest_framework',
     's',
+    'rest_framework',
     'tinymce',
     'pyuploadcare.dj',
     'bootstrap4',
@@ -68,7 +68,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-# AUTH_USER_MODEL = 's.User'
+# AUTH_USER_MODEL = 's.User'    
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
