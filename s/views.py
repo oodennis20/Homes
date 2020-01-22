@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from s import models
-
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http  import HttpResponse,Http404,HttpResponseRedirect,JsonResponse
 from django.contrib.auth.decorators import login_required
@@ -13,7 +12,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
-from .tokens import account_activation_token
+# from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from django.contrib import messages
@@ -42,7 +41,14 @@ def home(request):
             return render(request, 'hoods/hood.html', {"hood": hood, "businesses": businesses, "posts": posts})
         else:
             neighbourhoods = Hood.objects.all()
-            return render(request, 'index.html', {"neighbourhoods": neighbourhoods})
+            return render(request, 'index.html',{"neighbourhoods":neighbourhoods})
     else:
         neighbourhoods = Hood.objects.all()
-        return render(request, 'index.html', {"neighbourhoods": neighbourhoods})
+        return render(request, 'index.html',{"neighbourhoods":neighbourhoods})
+@login_required(login_url="/accounts/login/")
+def logout_request(request):
+    '''
+    view function renders home page once logout
+    '''
+    logout(request)
+    return redirect('home') 

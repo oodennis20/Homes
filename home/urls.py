@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-
+from django.conf.urls import url
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('s/v1/', include('s.urls'))
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'', include('s.urls')),
 ]
