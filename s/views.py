@@ -19,18 +19,6 @@ from django.contrib import messages
 
 # Create your views here.
 
-def signup(request):
-    if request.method == 'POST':
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.save()
-
-        return redirect('home') 
-    else:
-        form = SignupForm()
-    return render(request, 'registration/signup.html', {'form': form})
-
 def home(request):
     if request.user.is_authenticated:
         if Join.objects.filter(user_id=request.user).exists():
@@ -45,6 +33,14 @@ def home(request):
     else:
         neighbourhoods = Hood.objects.all()
         return render(request, 'index.html',{"neighbourhoods":neighbourhoods})
+
+@login_required(login_url='/accounts/login')
+def profile(request):
+
+    profile = Profile.objects.get(user = request.user)
+    return render(request,'profiles/profile.html',{"profile":profile,"hoods":hoods,"business": business}) 
+
+
 @login_required(login_url="/accounts/login/")
 def logout_request(request):
     '''

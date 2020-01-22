@@ -5,8 +5,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^$', views.home,name='home'),
-    url(r'^signup/$', views.signup, name='signup'),
-    url(r'^logout/$',views.logout_request,name="logout")
+    url(r'^logout/$',views.logout_request,name="logout"),
+    url(r'^profile/$',views.profile,name = 'profile'),
+    url(r'^editprofile/$',views.edit_profile,name= 'edit_profile'),
 ]
 
 if settings.DEBUG:
