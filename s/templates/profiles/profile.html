@@ -34,7 +34,12 @@
             </li>
             {% endif %}
           </ul>
+          
           <p class="font3">{{profile.bio}}</p>
+          {% if profile.user == user %}
+          <p><a href="{% url 'create_house' %}">Post a House</a></p>
+          {% endif %}
+
         </div>
       </div>
     </div>

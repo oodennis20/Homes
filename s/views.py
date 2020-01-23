@@ -64,6 +64,28 @@ def homes(request):
 	homes = Home.objects.filter(user = request.user)
 	return render(request,'homes/home.html',{"homes":homes})
 
+@login_required(login_url='/accounts/login/')
+def create_house(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = CreateHouseForm(request.POST, request.FILES)
+        if form.is_valid():
+            hood = form.save(commit = False)
+            hood.user = current_user
+            hood.save()
+            messages.success(request, 'You Have succesfully created a hood.Now proceed and join a hood')
+        return redirect('home')
+    else:
+        form = CreateHouseForm()
+    return render(request,'houses/create_houses.html',{"form":form})
+
+@login_required(login_url='/accounts/login/')
+def delete_house(request,id):
+
+	Hood.objects.filter(user = request.user,pk=id).delete()
+	messages.error(request,'Succesfully deleted the house you had posted')
+	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
 
 @login_required(login_url="/accounts/login/")
 def logout_request(request):
