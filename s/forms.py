@@ -27,7 +27,7 @@ class SignupForm(UserCreationForm):
 
 INTEGER_CHOICES= [tuple([x,x]) for x in range(1,10)]
 
-class PostForm(forms.ModelForm):
-    class Meta:
-        model = Posts
-        fields = ['title', 'content']
+# class PostForm(forms.ModelForm):
+#     class Meta:
+#         model = Posts
+#         fields = ['title', 'content']

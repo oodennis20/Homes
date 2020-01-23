@@ -8,12 +8,12 @@ urlpatterns = [
     url(r'^logout/$',views.logout_request,name="logout"),
     url(r'^profile/$',views.profile,name = 'profile'),
     url(r'^editprofile/$',views.edit_profile,name= 'edit_profile'),
-    url(r'^createpost/$', views.create_post, name = 'create_post'),
-    url(r'^createhood/$', views.create_hood, name='create_house'),
+    # url(r'^createpost/$', views.create_post, name = 'create_post'),
+    url(r'^createhouse/$', views.create_house, name='create_house'),
     url(r'^comment/(?P<pk>\d+)',views.add_comment, name='comment'),
-    url(r'^deletepost/(\d+)',views.delete_post,name = 'delete_post'),
-    url(r'^search/$',views.search,name= 'search'),
-    url(r'^deletehood/(\d+)',views.delete_hood,name = 'delete_house'),
+    # url(r'^deletepost/(\d+)',views.delete_post,name = 'delete_post'),
+    # url(r'^search/$',views.search,name= 'search'),
+    url(r'^deletehood/(\d+)',views.delete_house,name = 'delete_house'),
 ]
 
 if settings.DEBUG:

@@ -66,7 +66,7 @@ def homes(request):
 
 @login_required(login_url='/accounts/login/')
 def add_comment(request,pk):
-    image = get_object_or_404(Image, pk=pk)
+    image = get_object_or_404(Home, pk=pk)
     current_user = request.user
     if request.method == 'POST':
         form = CommentForm(request.POST)

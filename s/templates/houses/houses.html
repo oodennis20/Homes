@@ -72,6 +72,19 @@
           <p>{{ biz.b_description }}</p>
           <p>{{ biz.b_email}}</p>
         </div>
+        {% for comment in comments %}
+        {% if image.id == comment.image.id %}
+        <p><strong>{{comment.poster}}</strong>    {{comment.comment}}</p>
+        {% endif %}
+        {%endfor%}
+        {{form.media}}
+
+        <form action="{%url 'comment' pk=image.id%}" method="post" enctype="multipart/form-data" id="sema">
+            {%csrf_token%}
+
+            {% bootstrap_form form%}
+
+        </form>
       </div>
       {% endfor %}
       <div>
