@@ -45,6 +45,22 @@ class Profile(models.Model):
 
         return profile
 
+class Comment(models.Model):
+    poster = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='comments',null=True)
+    comment = models.CharField(max_length=200, null=True)
+
+    def __str__(self):
+        return self.comment
+
+    def save_comment(self):
+        self.save()
+
+    @classmethod
+    def get_comment(cls):
+        comment = Comment.objects.all()
+        return comment
+
 class More(models.Model):
 	user_id = models.OneToOneField(User, on_delete=models.CASCADE,null=True )
 	hood_id = models.ForeignKey(Home, on_delete=models.CASCADE,null=True)
