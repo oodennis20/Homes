@@ -28,3 +28,6 @@ from . models import *
 #   ordering = ('email',)
 #   inlines = (UserProfileInline, )
 
+admin.site.register(Profile)
+admin.site.register(Home)
+admin.site.register(Location)

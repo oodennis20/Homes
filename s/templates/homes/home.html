@@ -7,21 +7,20 @@
 <br>
 <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 <div class="c" style="padding-top: 24px">
-  {% include 'message/message.html' %}
+  <!-- {% include 'message/message.html' %} -->
 </div>
 
 <div class="container-fluid">
   <header>
-    <h1 class="text-center" style="font-weight:bold">{{hood.hood_name}}</h1>
-    <h5 class="text-center"><small>{{hood.location}}</small></h5>
+    <!-- <h1 class="text-center" style="font-weight:bold">{{home.home_name}}</h1> -->
+    <h5 class="text-center"><small>{{home.location}}</small></h5>
   </header>
   <div class="row">
     <div class="col-3 ">
       
-      <a class="btn btn-sm btn-danger" href="{% url 'exitHood' hood.id %}" style="margin:10px">Leave Neighbourhood</a>
+      <a class="btn btn-sm btn-danger" href="{% url 'exitHome' home.id %}" style="margin:10px">Exit</a>
       <br>
-      <a class="btn btn-sm btn-primary" href="{% url 'create_post' %}">Create Post</a>
-      <a class="btn btn-sm btn-secondary" href="{% url 'add_business' %}">Add Business</a>
+     
 
       <h4>Police and Healthcare</h4>
       <p><small>0712345678</small></p>
@@ -41,7 +40,7 @@
           <hr>
 
         </div>
-        <a href="{% url 'delete_post' post.id %}" class="btn btn-sm btn-danger">Delete</a>
+        <!-- <a href="{% url 'delete_post' post.id %}" class="btn btn-sm btn-danger">Delete</a> -->
         <hr>
         <!DOCTYPE html>
 <html>
@@ -61,7 +60,7 @@
       <div>
         {% else %}
         <p>No Posts yet</p>
-        <a class="btn btn-sm btn-secondary" href="{% url 'create_post' %}">Create Post</a>
+        <img src="{{home.home_photo.cdn_url}}" class="card-img-top">
         {% endif %}
       </div>
     </div>
@@ -86,7 +85,6 @@
       <div>
         {% else %}
         <p>No Biz</p>
-        <a class="btn btn-sm btn-secondary" href="{% url 'add_business' %}">Add Business</a>
         {% endif %}
   </div>
 </div>

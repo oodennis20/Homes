@@ -63,7 +63,7 @@ class Comment(models.Model):
 
 class More(models.Model):
 	user_id = models.OneToOneField(User, on_delete=models.CASCADE,null=True )
-	hood_id = models.ForeignKey(Home, on_delete=models.CASCADE,null=True)
+	home_id = models.ForeignKey(Home, on_delete=models.CASCADE,null=True)
 
 	def __str__(self):
 		return self.user_id

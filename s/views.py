@@ -22,11 +22,11 @@ from django.contrib import messages
 def home(request):
     if request.user.is_authenticated:
         if More.objects.filter(user_id=request.user).exists():
-            home = Home.objects.get(pk=request.user.join.hood_id.id)
-            posts = Posts.objects.filter(home=request.user.join.hood_id.id)
-            businesses = Business.objects.filter(home=request.user.join.hood_id.id)
+            home = Home.objects.get(pk=request.user.more.home_id.id)
+            # posts = Posts.objects.filter(home=request.user.more.home_id.id)
+            # businesses = Business.objects.filter(home=request.user.more.home_id.id)
 
-            return render(request, 'homes/home.html', {"home": home, "businesses": businesses, "posts": posts})
+            return render(request, 'homes/home.html', {"home": home})
         else:
             neighbourhoods = Home.objects.all()
             return render(request, 'index.html',{"neighbourhoods":neighbourhoods})
@@ -39,6 +39,14 @@ def profile(request):
 
     profile = Profile.objects.get(user = request.user)
     return render(request,'profiles/profile.html',{"profile":profile,"homes":homes}) 
+
+@login_required(login_url='/accounts/login/')
+def exitHome(request,homeId):
+
+	if More.objects.filter(user_id = request.user).exists():
+		More.objects.get(user_id = request.user).delete()
+		messages.error(request, 'You have succesfully exited this Neighbourhood.')
+		return redirect('home')
 
 @login_required(login_url='/accounts/login/')
 def edit_profile(request):
@@ -83,14 +91,29 @@ def add_comment(request,pk):
     return render(request, 'comment.html', {"user":current_user,"comment_form":form})
 
 @login_required(login_url='/accounts/login/')
+def more(request,homeId):
+
+	neighbourhood = Home.objects.get(pk = homeId)
+	if More.objects.filter(user_id = request.user).exists():
+
+		More.objects.filter(user_id = request.user).update(home_id = neighbourhood)
+	else:
+
+		More(user_id=request.user,home_id = neighbourhood).save()
+
+	# messages.success(request, 'Success! You have succesfully joined this Neighbourhood ')
+	return redirect('home')
+
+
+@login_required(login_url='/accounts/login/')
 def create_house(request):
     current_user = request.user
     if request.method == 'POST':
         form = CreateHouseForm(request.POST, request.FILES)
         if form.is_valid():
-            hood = form.save(commit = False)
-            hood.user = current_user
-            hood.save()
+            house = form.save(commit = False)
+            house.user = current_user
+            house.save()
             messages.success(request, 'You Have succesfully created a hood.Now proceed and join a hood')
         return redirect('home')
     else:
@@ -100,7 +123,7 @@ def create_house(request):
 @login_required(login_url='/accounts/login/')
 def delete_house(request,id):
 
-	Hood.objects.filter(user = request.user,pk=id).delete()
+	Home.objects.filter(user = request.user,pk=id).delete()
 	messages.error(request,'Succesfully deleted the house you had posted')
 	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 

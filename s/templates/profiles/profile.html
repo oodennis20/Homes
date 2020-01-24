@@ -47,9 +47,9 @@
   <hr>
   <div class="container">
     <div class="row">
-      {% for hood in hoods %}
+      {% for house in houses %}
       <div class="col-md-4">
-        <h4>Hoods</h4>
+        <h4>Houses</h4>
         <img src="{{home.home_photo.cdn_url}}" alt="Image" style="height:300px;width:300px;">
         <br>
         <a href="{% url 'delete_home' home.id %}" class="btn btn-sm btn-danger">Delete</a>
@@ -71,13 +71,7 @@
 </div>
 
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <iframe width="800" height="400" frameborder="0" src="https://www.bing.com/maps/embed?h=400&w=800&cp=-1.3050052783503219~36.83411361443448&lvl=12&typ=d&sty=r&src=SHELL&FORM=MBEDV8" scrolling="no">
-     
-    <div style="white-space: nowrap; text-align: center; width: 800px; padding: 6px 0;">
-       <a id="largeMapLink" target="_blank" src="https://www.bing.com/maps?cp=-1.3050052783503219~36.83411361443448&amp;sty=r&amp;lvl=12&amp;FORM=MBEDLD">View Larger Map</a> &nbsp; | &nbsp;
-       <a id="dirMapLink" target="_blank" src="https://www.bing.com/maps/directions?cp=-1.3050052783503219~36.83411361443448&amp;sty=r&amp;lvl=12&amp;rtp=~pos.-1.3050052783503219_36.83411361443448____&amp;FORM=MBEDLD">Get Directions</a>
-   </div>
-  </iframe>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7905089909386!2d36.78494441434501!3d-1.3005501360077136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f109b8af13d0b%3A0xbdeb9a77aa4d971d!2sPrestige%20Plaza%20Shopping%20Mall!5e0!3m2!1sen!2ske!4v1579847065997!5m2!1sen!2ske" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
