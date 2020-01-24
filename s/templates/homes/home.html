@@ -13,7 +13,7 @@
 <div class="container-fluid">
   <header>
     <!-- <h1 class="text-center" style="font-weight:bold">{{home.home_name}}</h1> -->
-    <h5 class="text-center"><small>{{home.location}}</small></h5>
+    <h5 class="text-center" style="font-size: 70px;"><small>{{home.location}}</small></h5>
   </header>
   <div class="row">
     <div class="col-3 ">
@@ -22,11 +22,11 @@
       <br>
      
 
-      <h4>Police and Healthcare</h4>
-      <p><small>0712345678</small></p>
+      <h4></h4>
+      <p><small></small></p>
     </div>
     <div class="col-5">
-      <h4>{{home.home_description}} comments</h4>
+      <h4>{{home.home_description}}</h4>
       <hr>
       {%if comments%}
       {% for comment in comments %}
@@ -59,13 +59,13 @@
       {% endfor %}
       <div>
         {% else %}
-        <p>No Posts yet</p>
+        <p></p>
         <img src="{{home.home_photo.cdn_url}}" class="card-img-top">
         {% endif %}
       </div>
     </div>
     <div class="col-3">
-      <h4>Businesses</h4>
+      <h4></h4>
       <hr>
       {% if businesses %}
       {% for biz in businesses %}
@@ -84,8 +84,9 @@
       {% endfor %}
       <div>
         {% else %}
-        <p>No Biz</p>
+        <p></p>
         {% endif %}
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7905089909386!2d36.78494441434501!3d-1.3005501360077136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f109b8af13d0b%3A0xbdeb9a77aa4d971d!2sPrestige%20Plaza%20Shopping%20Mall!5e0!3m2!1sen!2ske!4v1579847065997!5m2!1sen!2ske" width="1250" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
   </div>
 </div>
 </div>
