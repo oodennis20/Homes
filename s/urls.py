@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^comment/(?P<pk>\d+)',views.add_comment, name='comment'),
     # url(r'^deletepost/(\d+)',views.delete_post,name = 'delete_post'),
     # url(r'^search/$',views.search,name= 'search'),
-    url(r'^deletehood/(\d+)',views.delete_house,name = 'delete_house'),
+    url(r'^deletehouse/(\d+)',views.delete_house,name = 'delete_house'),
 ]
 
 if settings.DEBUG:
